@@ -29408,21 +29408,21 @@ var clickTimeslot = function(eventData) {
 	      locked: false
 	    },
 	    comment: {
-	      enabled: true,
+	      enabled: false,
 	      placeholder: 'How Did You Find Us',
 	      prefilled: false,
 	      required: false,
 	      locked: false
 	    },
 	    phone: {
-	      enabled: true,
+	      enabled: false,
 	      placeholder: 'Date Of Birth',
 	      prefilled: false,
 	      required: true,
 	      locked: false
 	    },
 	    voip: {
-	      enabled: true,
+	      enabled: false,
 	      placeholder: 'Booking Voucher',
 	      prefilled: false,
 	      required: false,
