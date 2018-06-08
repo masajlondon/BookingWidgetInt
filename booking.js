@@ -29418,7 +29418,7 @@ var clickTimeslot = function(eventData) {
 	      enabled: false,
 	      placeholder: 'Date Of Birth',
 	      prefilled: false,
-	      required: true,
+	      required: false,
 	      locked: false
 	    },
 	    voip: {
