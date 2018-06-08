@@ -651,48 +651,9 @@ var clickTimeslot = function(eventData) {
 	  });
 
 		var handlepayment = function(ot, formData, formElement, e, eventData, bookingVoucherPrice){
-        console.log(bookingVoucherPrice);
-				if (parseInt(bookingVoucherPrice) <= 1){
-					submitBookingForm(formData, ot, e, eventData);
-					$(ot).removeClass('loading').addClass('success');
+			submitBookingForm(formData, ot, e, eventData);
+			$(ot).removeClass('loading').addClass('success');
 
-				} else {
-					var handler = StripeCheckout.configure({
-						key: 'pk_live_xrC5u3yE7x3y5q9YZbqPpQ8E',
-						image: 'https://rawgit.com/masajlondon/number1-60mins/master/dist/paymenticon.png',
-						locale: 'auto',
-						token: function(token) {
-								$('.pay').prop("disabled", true);
-								$('.pay').text('Paying...')
-								$.ajax({
-									url: 'https://wt-258f33603576bc2c25409bcf95e582f4-0.sandbox.auth0-extend.com/webtask-stripe-order',
-									type: 'POST',
-									data: {
-										stripeToken: token.id,
-										stripePrice: bookingVoucherPrice*100
-									}
-								}).then(function(stripeCustomer) {
-									submitBookingForm(formData, ot, e, eventData, bookingVoucherPrice);
-								}).fail(function(e) {
-									$('.pay').text('Buy');
-									alert('There was an error processing the payment. Please try again.')
-								});
-								}
-						});
-
-						e.preventDefault()
-						handler.open({
-							name: 'Masaj',
-							description: '',
-							currency: 'gbp',
-							amount: bookingVoucherPrice*100
-						});
-
-						// Close Checkout on page navigation:
-						window.addEventListener('popstate', function() {
-							handler.close();
-						});
-			}
 		};
 
 
